@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 
-//import { Provider } from 'react-redux';
-//import store from './utils/store';
+import { Provider } from 'react-redux';
+import store from './utils/store';
 
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
@@ -29,7 +29,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <Provider store={store}> 
       <Router>
         <div>
             <Nav />
@@ -44,7 +44,7 @@ function App() {
             </Switch>
         </div>
       </Router>
-    </ApolloProvider>
+    </Provider>
 
   );
 }
