@@ -29,10 +29,10 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <Provider store={store}>
+    <ApolloProvider client={client}>
       <Router>
         <div>
-          <ApolloProvider client={client}>
+          <Provider store={store}>
             <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
@@ -43,13 +43,12 @@ function App() {
               <Route exact path="/products/:id" component={Detail} />
               <Route component={NoMatch} />
             </Switch>
-          </ApolloProvider>
+          </Provider>
         </div>
       </Router>
-    </Provider>
+    </ApolloProvider>
 
   );
 }
-
 
 export default App;
